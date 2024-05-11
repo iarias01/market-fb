@@ -1,0 +1,100 @@
+<nz-layout class="app-layout">
+  <app-header></app-header>
+  <nz-content>
+    <div class="inner-content">
+      <div
+        class="list-container flex_row flex_center_certical flex_around flex_wrap flex_100"
+      >
+        <form class="filter">
+          <nz-list nzBordered>
+            <nz-list-header class="filter-container h3">
+              <span>Filtros</span>
+              <div class="filtrado">
+                <span class="filtrado__opt"
+                  >Marca: {{ marca === "Ryzen" ? "AMD" : marca }}</span
+                >
+                <span class="filtrado__opt">
+                  Categoría:
+                  {{ catProd !== "todas" ? getBrand + catProd : getBrand }}
+                </span>
+
+                <button
+                  nz-button
+                  nzType="dashed"
+                  nzShape="circle"
+                  nz-tooltip
+                  nzTooltipTitle="Borrar Filtros"
+                  (click)="resetFilter()"
+                >
+                  <i nz-icon nzType="close"></i>
+                </button>
+              </div>
+            </nz-list-header>
+            <div class="options-container">
+              <nz-collapse class="options">
+                <nz-collapse-panel
+                  class="animate__animated animate__bounceInLeft"
+                  nzHeader="Fabricante"
+                  [nzActive]="true"
+                  [nzDisabled]="false"
+                >
+                  <nz-radio-group
+                    [(ngModel)]="marca"
+                    name="marca"
+                    class="flex_column radio-group"
+                  >
+                    <label nz-radio nzValue="todas" (click)="filterList()"
+                      >Todas</label
+                    >
+                    <label nz-radio nzValue="Ryzen" (click)="filterList()"
+                      >AMD</label
+                    >
+                    <label nz-radio nzValue="Intel" (click)="filterList()"
+                      >Intel</label
+                    >
+                  </nz-radio-group>
+                </nz-collapse-panel>
+              </nz-collapse>
+              <nz-collapse class="options">
+                <nz-collapse-panel
+                  class="animate__animated animate__bounceInLeft"
+                  nzHeader="Categoría"
+                  [nzActive]="true"
+                  [nzDisabled]="false"
+                >
+                  <nz-radio-group
+                    [(ngModel)]="catProd"
+                    name="catProd"
+                    class="flex_column"
+                  >
+                    <label nz-radio nzValue="todas" (click)="filterList()"
+                      >Todas</label
+                    >
+                    <label nz-radio nzValue="3" (click)="filterList()"
+                      >{{ getBrand }}3</label
+                    >
+                    <label nz-radio nzValue="5" (click)="filterList()"
+                      >{{ getBrand }}5</label
+                    >
+                    <label nz-radio nzValue="7" (click)="filterList()"
+                      >{{ getBrand }}7</label
+                    >
+                    <label nz-radio nzValue="9" (click)="filterList()"
+                      >{{ getBrand }}9</label
+                    >
+                  </nz-radio-group>
+                </nz-collapse-panel>
+              </nz-collapse>
+            </div>
+          </nz-list>
+        </form>
+        <div class="catalog flex_row flex_center_certical flex_wrap">
+          <app-card-prod
+            *ngFor="let prod of lstProducts_show"
+            [prod]="prod"
+          ></app-card-prod>
+        </div>
+      </div>
+    </div>
+  </nz-content>
+</nz-layout>

@@ -1,0 +1,119 @@
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nz-content {
+  padding: 24px;
+  background-image: url("/assets/img/fondo.jpg") !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.inner-content {
+  overflow-y: hidden;
+  .catalog {
+    width: 100%;
+    max-width: calc(100% - 280px);
+    min-width: 500px;
+    height: 100%;
+    max-height: 767px;
+    overflow-y: scroll;
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    app-card-prod {
+      width: calc(25% - 10px);
+      max-width: 300px;
+      min-width: 215px;
+      margin: 5px;
+    }
+  }
+}
+
+.alert {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  width: 300px;
+}
+.list-container {
+  overflow: hidden;
+  .filter {
+    height: 100%;
+    width: 260px;
+    &-container {
+      display: flex;
+      flex-direction: column;
+      padding: 5px 10px;
+      margin: 0;
+    }
+    * {
+      background-color: #fff;
+    }
+  }
+  .filtrado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 400;
+    padding-right: 30px;
+    button {
+      position: absolute;
+      right: 10px;
+      top: 3px;
+    }
+    &__opt {
+      margin: auto 3px;
+    }
+  }
+}
+
+@media screen and (max-width: 945px) {
+  ::ng-deep .ant-collapse-content {
+    height: 143px;
+  }
+  .list-container {
+    .filter {
+      padding: 0 5px;
+      width: 100%;
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+      }
+      .options-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .options {
+          width: 230px;
+        }
+      }
+    }
+    .filtrado {
+      font-size: 14px;
+      padding-right: 0;
+      button {
+        position: static;
+        margin-left: 20px;
+      }
+      &__opt {
+        margin: auto 10px;
+      }
+    }
+  }
+  .inner-content {
+    padding: 10px;
+    .catalog {
+      padding: 0;
+      max-width: none;
+      height: calc(100vh - 390px);
+    }
+  }
+}
